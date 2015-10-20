@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
     private ItemLlamada[] llamadas =
             new ItemLlamada[]{
-                    new ItemLlamada("Juan", "http://www.google.es", R.drawable.user),
-                    new ItemLlamada("Marta", "http://www.yahoo.es", R.drawable.user)
+                    new ItemLlamada("Juan", "548274264", R.drawable.user, "09-12-2015"),
+                    new ItemLlamada("Marta", "256864855", R.drawable.user, "23-07-2015")
             };
 
     private ItemChat[] chats =
@@ -119,9 +119,10 @@ public class MainActivity extends AppCompatActivity {
         lst_llamadas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String URL_destino = ((TextView) view.findViewById(R.id.enlace)).getText().toString();
+                String tel = ((TextView) view.findViewById(R.id.telefono)).getText().toString();
 
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(URL_destino));
+                //hay que concatenar un tel: delante para que lo entienda como un numero de telefono
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + tel));
 
                 startActivity(intent);
             }
@@ -196,9 +197,10 @@ public class MainActivity extends AppCompatActivity {
 
                 holder = new ViewHolderLlamada();
 
-                holder.titulo = (TextView)item.findViewById(R.id.titulo);
-                holder.enlace = (TextView)item.findViewById(R.id.enlace);
-                holder.logo = (ImageView)item.findViewById(R.id.logo);
+                holder.nombre = (TextView)item.findViewById(R.id.nombre);
+                holder.telefono = (TextView)item.findViewById(R.id.telefono);
+                holder.foto = (ImageView)item.findViewById(R.id.foto);
+                holder.fecha = (TextView)item.findViewById(R.id.fecha);
 
                 item.setTag(holder);
             }else{
@@ -206,9 +208,10 @@ public class MainActivity extends AppCompatActivity {
             }
 
             //asignando valores al final evitamos que el ViewHolder duplique valores
-            holder.titulo.setText(llamadas[position].getTitulo());
-            holder.enlace.setText(llamadas[position].getEnlace());
-            holder.logo.setImageResource(llamadas[position].getLogo());
+            holder.nombre.setText(llamadas[position].getNombre());
+            holder.telefono.setText(llamadas[position].getTelefono());
+            holder.foto.setImageResource(llamadas[position].getFoto());
+            holder.fecha.setText(llamadas[position].getFecha());
 
             return(item);
         }
@@ -291,9 +294,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     static class ViewHolderLlamada{
-        TextView titulo;
-        TextView enlace;
-        ImageView logo;
+        TextView nombre;
+        TextView telefono;
+        ImageView foto;
+        TextView fecha;
     }
 
     static class ViewHolderChat{

@@ -8,21 +8,28 @@
     <ImageView
         android:layout_width="88dp"
         android:layout_height="88dp"
-        android:id="@+id/logo" />
+        android:id="@+id/foto" />
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView android:id="@+id/titulo"
+        <TextView android:id="@+id/nombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="20sp"
             android:layout_weight="1" />
 
-        <TextView android:id="@+id/enlace"
+        <TextView android:id="@+id/telefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_weight="1" />
+
+        <TextView android:id="@+id/fecha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"

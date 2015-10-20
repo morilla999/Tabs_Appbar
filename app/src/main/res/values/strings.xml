@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Whats App</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="buscar">Buscar</string>
+    <string name="accion">Acción</string>
+</resources>
